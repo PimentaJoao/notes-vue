@@ -1,0 +1,16 @@
+[Bind]
+
+    (binding to image 'src' attribute)
+    Contrary to popular belief, one can't simply use :src="someComputedProperty" to bind a dynamic path to a image file. Instead, you got to return a require function.
+    Example:
+    
+        someComputedProperty: function {
+            return '/assets/images/' + this.dynamicImageName + '.jpg'; // WRONG 
+        }
+        
+        someComputedProperty: function {
+            return {
+                path: require('/assets/images/' + this.dynamicImageName + '.jpg') // RIGHT
+            }
+        }
+        
